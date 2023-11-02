@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 0)
+  (lib (name "Adafruit TCS34725-eagle-import")(type "KiCad")(uri "${KIPRJMOD}/Adafruit TCS34725-eagle-import.kicad_sym")(options "")(descr ""))
+)
