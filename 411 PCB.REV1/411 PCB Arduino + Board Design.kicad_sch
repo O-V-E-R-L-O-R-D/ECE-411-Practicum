@@ -1990,7 +1990,7 @@
     (property "Value" "LED" (at 421.64 198.4375 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" (at 417.83 195.58 0)
+    (property "Footprint" "" (at 417.83 195.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 417.83 195.58 0)
