@@ -4,12 +4,16 @@
 #include <Adafruit_SSD1306.h>
 // RGB color sensor library
 #include <Adafruit_TCS34725.h>
-
+// Non-volatile memory
+#include <EEPROM.h>
 
 // Button pin
-#define buttonPin 11
+#define buttonPin 4 //Pin 6 on ATmega
+
+#define minRedLocation    0
+#define maxRedLocation    6
 // Sensor LED pin
-#define senpin 3
+#define senpin A1   //Pin 24 on ATmega
 // OLED Parameters
 #define SCREEN_WIDTH 128      // OLED display width, in pixels
 #define SCREEN_HEIGHT 32      // OLED display height, in pixels
@@ -30,6 +34,14 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_499MS, TCS347
 */
 //Initialize to calibration mode
 uint8_t mode_state = 1;   
+
+// Save these variables between loops (global)
+// Calibration values
+struct calibrationCodes{
+  uint16_t min_red, min_green, min_blue;
+  uint16_t max_red, max_green, max_blue; 
+};
+calibrationCodes cal_val;
 
 void setup()
 {
@@ -68,11 +80,26 @@ void setup()
     display.println("No TCS34725 found ... check your connections");
     while (1);
   }
+
+  // IF first ever boot (EEPROM has no valid Data)
+  if(( 0xFF == EEPROM.read(minRedLocation)) && (0xFF == EEPROM.read(maxRedLocation))){
+    cal_val.min_red   = 255;
+    cal_val.min_green = 255;
+    cal_val.min_blue  = 255;
+    cal_val.max_red   = 0;
+    cal_val.max_green = 0;
+    cal_val.max_blue  = 0;
+  }
+
+  // Retrieve stored calibration values
+  else{
+    EEPROM.get(0, cal_val);
+  }
+
+
+
 }
-// Save these variables between loops (global)
-// Calibration values
-uint16_t min_red, min_green, min_blue = 255;
-uint16_t max_red, max_green, max_blue = 0;
+
 void loop()
 {
   // Raw RGB values
@@ -107,6 +134,14 @@ void loop()
     min_green = raw_green;
     min_blue  = raw_blue;
     delay(500);
+    
+    /*
+    // Seve calibration data to memory
+    for(int i; i < num_val_stored * sizeof(uint16_t); i += sizeof(uint16_t)){
+      EEPROM.update()
+
+    }
+    */
 
     // Tell user were entering white calibration
     display.clearDisplay();
