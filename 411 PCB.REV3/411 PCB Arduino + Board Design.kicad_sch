@@ -1526,6 +1526,10 @@
     (stroke (width 0) (type default))
     (uuid 14edc56e-96a1-42b1-bdc3-9fa850c9fc53)
   )
+  (wire (pts (xy 298.45 204.47) (xy 365.76 204.47))
+    (stroke (width 0) (type default))
+    (uuid 19733a6c-bac0-4ab2-84aa-7342971d7a6b)
+  )
   (wire (pts (xy 317.5 224.79) (xy 317.5 222.25))
     (stroke (width 0) (type default))
     (uuid 1a3b9874-d686-46be-a4f9-07302ff4aef7)
@@ -1537,6 +1541,10 @@
   (wire (pts (xy 168.91 111.76) (xy 168.91 119.38))
     (stroke (width 0) (type default))
     (uuid 21ff9193-0ad2-4544-813c-599e63e2a2d1)
+  )
+  (wire (pts (xy 365.76 196.85) (xy 383.54 196.85))
+    (stroke (width 0) (type default))
+    (uuid 22648b23-7baf-48b1-b75d-2a11401f0ce7)
   )
   (wire (pts (xy 261.62 189.23) (xy 261.62 265.43))
     (stroke (width 0) (type default))
@@ -1850,6 +1858,10 @@
     (stroke (width 0) (type default))
     (uuid dd888595-8741-4649-969e-e762b2a9cc3a)
   )
+  (wire (pts (xy 365.76 204.47) (xy 365.76 196.85))
+    (stroke (width 0) (type default))
+    (uuid e2c4f9e8-ee2a-4cc3-b4c2-d33e4d6416b5)
+  )
   (wire (pts (xy 327.66 191.77) (xy 383.54 191.77))
     (stroke (width 0) (type default))
     (uuid e5659cb8-6197-4d3a-af22-96985b2dbd90)
@@ -2035,7 +2047,7 @@
     (property "Datasheet" "" (at 393.7 212.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid a4d5bbbb-067e-45b7-9f4a-638128ef063a))
+    (pin "1" (uuid 12121205-ade9-4982-8f75-e28b9d3d5747))
     (instances
       (project "411 PCB Arduino + Board Design"
         (path "/3b213592-ad28-4b80-bc7a-214b9fe026d8"
@@ -2391,8 +2403,8 @@
     (property "Datasheet" "~" (at 379.73 243.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 0e87e326-19bc-4daf-9148-3c504808860a))
-    (pin "2" (uuid cc8322f0-ee7a-49f9-b379-92cade522735))
+    (pin "1" (uuid f647ed0e-1ca8-4a27-bbb9-2307f739f4ee))
+    (pin "2" (uuid a90bd7af-e759-4f0e-900e-ee81b8bda386))
     (instances
       (project "411 PCB Arduino + Board Design"
         (path "/3b213592-ad28-4b80-bc7a-214b9fe026d8"
@@ -2523,9 +2535,9 @@
     (property "Datasheet" "~" (at 391.16 238.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 02f9a007-d985-4485-9dd2-7036eb796208))
-    (pin "2" (uuid e9cf4ef1-1361-44b0-bcb7-0148964ed33b))
-    (pin "3" (uuid 2ca90272-ddca-46eb-8008-4a2f4f23161d))
+    (pin "1" (uuid 3ca12caa-fdf8-4ce0-bb52-a79fd09f2ab2))
+    (pin "2" (uuid 1dbeed19-447e-4ca1-aa63-5d24bb53fbab))
+    (pin "3" (uuid 88ac3f6b-ec33-4f15-8928-e99b355e85a1))
     (instances
       (project "411 PCB Arduino + Board Design"
         (path "/3b213592-ad28-4b80-bc7a-214b9fe026d8"
@@ -2944,8 +2956,8 @@
     (property "Datasheet" "~" (at 393.7 217.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid b10ff13a-ca00-4495-9a19-599c56101b49))
-    (pin "2" (uuid 5c16216f-e90a-4946-b39f-414e86542ed5))
+    (pin "1" (uuid f17be35b-5928-47f7-b890-cfbb48f3a349))
+    (pin "2" (uuid 332dcb65-1935-4c62-82cb-6ec14c746fb2))
     (instances
       (project "411 PCB Arduino + Board Design"
         (path "/3b213592-ad28-4b80-bc7a-214b9fe026d8"
@@ -3047,8 +3059,8 @@
     (property "Datasheet" "~" (at 393.7 226.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 55f9980c-4658-4bef-9bc1-f2d16d043b0f))
-    (pin "2" (uuid 09c6e5a0-6770-4daf-ad03-876d1558c349))
+    (pin "1" (uuid ce8a2c0e-0824-4970-92f8-b06d96a49277))
+    (pin "2" (uuid e854dc2d-050d-4cbf-92bb-3a75a412b02b))
     (instances
       (project "411 PCB Arduino + Board Design"
         (path "/3b213592-ad28-4b80-bc7a-214b9fe026d8"
@@ -3255,7 +3267,7 @@
     (property "Datasheet" "" (at 393.7 251.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid b8b7c11d-89f0-40c3-8394-59687af63151))
+    (pin "1" (uuid 1ae750da-670e-41b7-aca5-12694c5528b9))
     (instances
       (project "411 PCB Arduino + Board Design"
         (path "/3b213592-ad28-4b80-bc7a-214b9fe026d8"
