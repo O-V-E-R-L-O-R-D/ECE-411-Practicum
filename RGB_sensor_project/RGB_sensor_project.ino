@@ -18,12 +18,12 @@
 #define debounceDelay 50
 
 // Button pin
-#define buttonPin 6 //Pin 6 on Raw ATmega // 4 on Arduino Uno
+#define buttonPin 4 //Pin 6 on Raw ATmega // 4 on Arduino Uno
 
 #define minRedLocation    0
 #define maxRedLocation    6
 // Sensor LED pin
-#define senpin 24   //Pin 24 on Raw ATmega // A1 on Arduino Uno
+#define senpin  A1  //Pin 24 on Raw ATmega // A1 on Arduino Uno
 // OLED Parameters
 #define SCREEN_WIDTH    128 // OLED display width, in pixels
 #define SCREEN_HEIGHT    32 // OLED display height, in pixels
@@ -62,7 +62,7 @@ calibrationCodes cal_val;
 void setup()
 {
   // Set Baud rate
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // Initialize the pushbutton pin as an input:
   pinMode(buttonPin, INPUT);
