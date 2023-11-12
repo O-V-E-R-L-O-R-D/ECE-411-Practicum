@@ -15,7 +15,7 @@
 
 // Threshold time for button press
 // decuces misclick
-#define debounceDelay 50
+#define debounceDelay 500
 
 // Button pin
 #define buttonPin 4 //Pin 6 on Raw ATmega // 4 on Arduino Uno
@@ -62,7 +62,7 @@ calibrationCodes cal_val;
 void setup()
 {
   // Set Baud rate
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // Initialize the pushbutton pin as an input:
   pinMode(buttonPin, INPUT);
@@ -160,6 +160,7 @@ void loop()
     Serial.println("Calibrate for white");  //debug line
     display.print("target: #FFFFFF");
     display.display();
+    delay(1000);
 
     // Wait unitl button is pressed to collect white data
     while(digitalRead(buttonPin) == LOW){}
@@ -187,7 +188,10 @@ void loop()
   else if(mode_state == colorSensingMode){
     // Turn on light for Color Sensor
     digitalWrite(senpin, HIGH);
-    delay(100);
+  
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    delay(500);
     
     /*//Debug
     //////////////////////////////////////////////////////////// 
@@ -202,9 +206,6 @@ void loop()
     //////////////////////////////////////////////////////////// 
     */
 
-    display.clearDisplay();
-    display.setCursor(0, 0);
-    delay(50);
     // Sample Color sensor
     tcs.getRawData(&raw_red, &raw_green, &raw_blue, &clear);
     // Make adjustment based off of calibration
@@ -259,17 +260,20 @@ void loop()
       }
     }
     // Rcognise button press if button was held down longer than debounceDelay 
-    if((startPress - endPress) > debounceDelay){
-      if((startPress - endPress) > 5000){
-        mode_state = colorSensingMode;
+    if((endPress - startPress) > debounceDelay){
+      if((endPress - startPress) > 5000){
+        mode_state = calibrationMode;
         // Debug
         Serial.println("go to colorSensingMode");
       }
       else{
-        mode_state = calibrationMode;
+        mode_state = colorSensingMode;
         // Debug
         Serial.println("go to calibrationMode");
       }
+      // Reset button timmer
+      startPress = 0;
+      endPress = 0;
     }
     lastButtonReading = buttonReading;
   }
