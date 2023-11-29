@@ -15,7 +15,7 @@
 
 // Threshold time for button press
 // decuces misclick
-#define debounceDelay 500
+#define debounceDelay 50
 
 // Button pin
 #define buttonPin 4 //Pin 6 on Raw ATmega //Pin 4 on Arduino Uno //Pin 4 on Color Sensor PCB
@@ -263,7 +263,7 @@ void loop()
     }
     // Rcognise button press if button was held down longer than debounceDelay 
     if((endPress - startPress) > debounceDelay){
-      if((endPress - startPress) > 5000){
+      if((endPress - startPress) > 4500){
         mode_state = calibrationMode;
         // Debug
         Serial.println("go to colorSensingMode");
