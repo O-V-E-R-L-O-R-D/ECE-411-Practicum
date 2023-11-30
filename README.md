@@ -1,6 +1,5 @@
-# ECE-411-Practicum
-ECE-411-Practicum Project
----
+# ECE-411-Practicum Project
+
 ## Color Sensor State Diagram
 <img src="./ReadMe/ColorSensorStateDiagram.svg" width="700">
 
