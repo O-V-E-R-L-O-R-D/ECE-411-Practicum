@@ -15,10 +15,10 @@
 
 // Threshold time for button press
 // decuces misclick
-#define debounceDelay 500
+#define debounceDelay 50
 
 // Button pin
-#define buttonPin 4 //Pin 6 on Raw ATmega // 4 on Arduino Uno
+#define buttonPin 4 //Pin 6 on Raw ATmega //Pin 4 on Arduino Uno //Pin 4 on Color Sensor PCB
 
 #define minRedLocation    0
 #define maxRedLocation    6
@@ -90,10 +90,10 @@ void setup()
 
   if (tcs.begin()) {
     Serial.println("Color Sensor Working...");
-    display.println("Color Sensor Working...");
   } else {
     Serial.println("No TCS34725 found ... check your connections");
-    display.println("No TCS34725 found ... check your connections");
+    display.println("Color Sensor Error");
+    display.display();
     while (1); // Don't proceed, loop forever
   }
 
@@ -114,6 +114,8 @@ void setup()
     EEPROM.get(0, cal_val);
     // Go to idle mode
     mode_state = idleMode;
+    display.println("Hello :)");
+    display.display();
   }
   
 }
@@ -261,7 +263,7 @@ void loop()
     }
     // Rcognise button press if button was held down longer than debounceDelay 
     if((endPress - startPress) > debounceDelay){
-      if((endPress - startPress) > 5000){
+      if((endPress - startPress) > 4500){
         mode_state = calibrationMode;
         // Debug
         Serial.println("go to colorSensingMode");
