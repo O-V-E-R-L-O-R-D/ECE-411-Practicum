@@ -184,6 +184,9 @@ void loop()
     mode_state = idleMode;
     display.clearDisplay();
     display.display();
+    // Let user know it's done with a message on the display
+    display.println("Hello :)");
+    display.display();
   }
 
   // Color sensing mode
