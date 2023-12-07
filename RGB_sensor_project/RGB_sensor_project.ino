@@ -85,6 +85,7 @@ void setup()
   display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
   display.setTextSize(2);
   display.setTextColor(WHITE);
+  display.setCursor(0,0);
   display.clearDisplay();
   display.display();
 
@@ -114,6 +115,8 @@ void setup()
     EEPROM.get(0, cal_val);
     // Go to idle mode
     mode_state = idleMode;
+    display.clearDisplay();
+    display.setCursor(0,0);
     display.println("Hello :)");
     display.display();
   }
@@ -183,8 +186,8 @@ void loop()
     // End calibration and go to idle state
     mode_state = idleMode;
     display.clearDisplay();
-    display.display();
     // Let user know it's done with a message on the display
+    display.setCursor(0, 0);
     display.println("Hello :)");
     display.display();
   }
