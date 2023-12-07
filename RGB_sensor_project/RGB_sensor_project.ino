@@ -7,6 +7,12 @@
 // Non-volatile memory
 #include <EEPROM.h>
 
+
+// Turn on serial debug code
+// 1 = debug on
+// 0 = debug off
+#define debug 0
+
 // mode/state of operation
 #define calibrationMode       1
 #define colorSensingMode      2
@@ -32,7 +38,7 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // RGB color sensor parameters
-Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_499MS, TCS34725_GAIN_4X);
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_499MS, TCS34725_GAIN_4X); 
 
 // state machine for mode of operation
 /*  1 = color calibration mode  (hold button for x amount of time to enter calibration mode)
@@ -62,7 +68,7 @@ calibrationCodes cal_val;
 void setup()
 {
   // Set Baud rate
-  Serial.begin(9600);
+  if (debug == 1) Serial.begin(9600);
 
   // Initialize the pushbutton pin as an input:
   pinMode(buttonPin, INPUT);
@@ -74,7 +80,7 @@ void setup()
 
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
-    Serial.println(("SSD1306 allocation failed"));
+    if (debug == 1) Serial.println(("SSD1306 allocation failed"));
     while (1); // Don't proceed, loop forever
   }
 
@@ -90,9 +96,9 @@ void setup()
   display.display();
 
   if (tcs.begin()) {
-    Serial.println("Color Sensor Working...");
+    if (debug == 1) Serial.println("Color Sensor Working...");
   } else {
-    Serial.println("No TCS34725 found ... check your connections");
+    if (debug == 1) Serial.println("No TCS34725 found ... check your connections");
     display.println("Color Sensor Error");
     display.display();
     while (1); // Don't proceed, loop forever
@@ -144,7 +150,7 @@ void loop()
     display.clearDisplay();
     display.setCursor(0, 0);
     display.println("Calibrate for black");
-    Serial.println("Calibrate for black");  //debug line
+    if (debug == 1) Serial.println("Calibrate for black");
     display.print("target: #000000");
     display.display();
     
@@ -162,7 +168,7 @@ void loop()
     display.clearDisplay();
     display.setCursor(0, 0);
     display.println("Calibrate for white");
-    Serial.println("Calibrate for white");  //debug line
+    if (debug == 1) Serial.println("Calibrate for white");  //debug line
     display.print("target: #FFFFFF");
     display.display();
     delay(1000);
@@ -272,12 +278,12 @@ void loop()
       if((endPress - startPress) > 4500){
         mode_state = calibrationMode;
         // Debug
-        Serial.println("go to colorSensingMode");
+        if (debug == 1) Serial.println("go to colorSensingMode");
       }
       else{
         mode_state = colorSensingMode;
         // Debug
-        Serial.println("go to calibrationMode");
+        if (debug == 1) Serial.println("go to calibrationMode");
       }
       // Reset button timmer
       startPress = 0;
