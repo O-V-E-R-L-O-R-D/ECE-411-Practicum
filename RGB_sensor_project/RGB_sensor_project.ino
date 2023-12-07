@@ -134,7 +134,8 @@ void loop()
   // Raw RGB values
   uint16_t raw_red, raw_green, raw_blue, clear;
   // Real RGB values
-  float red, green, blue, total; 
+  //was float
+  int red, green, blue, total; 
 
   // Color calibration mode
   if(mode_state == calibrationMode){
@@ -181,7 +182,7 @@ void loop()
     cal_val.max_red   = raw_red; 
     cal_val.max_green = raw_green;
     cal_val.max_blue  = raw_blue;
-    delay(500);
+    delay(1000);
 
     // Turn off LED on RBG sensor
     digitalWrite(senpin, LOW);
@@ -205,7 +206,7 @@ void loop()
   
     display.clearDisplay();
     display.setCursor(0, 0);
-    delay(500);
+    delay(1000);
     
     /*//Debug
     //////////////////////////////////////////////////////////// 
@@ -251,6 +252,7 @@ void loop()
     Serial.print("\n");
     */
     // Turn off LED on RBG sensor
+    delay(1000);
     digitalWrite(senpin, LOW);
 
     // return to idle mode
